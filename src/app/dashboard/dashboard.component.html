@@ -1,6 +1,9 @@
-<h3>Open Sky Dashboard</h3>
-
-<table class="table">
-  <flight-table-header></flight-table-header>
-  <flight-table-body [flights]="flights"></flight-table-body>
-</table>
+<h3 class="d-flex justify-content-between">
+  Open Sky Dashboard
+  <span
+    ><button (click)="logout()" type="button" class="btn btn-secondary">
+      Logout
+    </button></span
+  >
+</h3>
+<flight-table [flights]="flights"></flight-table>
