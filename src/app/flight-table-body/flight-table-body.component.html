@@ -1,0 +1,9 @@
+<tbody>
+  <tr *ngFor="let flight of flights">
+    <td>{{ flight.callsign }}</td>
+    <td>{{ flight.estDepartureAirport }}</td>
+    <td>{{ flight.firstSeen * 1000 | date : "shortTime" }}</td>
+    <td>{{ flight.estArrivalAirport }}</td>
+    <td>{{ flight.lastSeen * 1000 | date : "shortTime" }}</td>
+  </tr>
+</tbody>
