@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
   //
   flights: any[] = [];
+  isLoading: boolean = true;
+  error: string = '';
 
   constructor(
     private openSky: FetchopenskyapiService,
@@ -20,9 +22,16 @@ export class DashboardComponent {
     const begin = 1517227200;
     const end = 1517230800;
 
-    this.openSky
-      .getFlight(begin, end)
-      .subscribe((data) => (this.flights = data));
+    this.openSky.getFlight(begin, end).subscribe(
+      (data) => {
+        this.isLoading = false;
+        this.flights = data;
+      },
+      (error) => {
+        this.isLoading = false;
+        this.error = error.message;
+      }
+    );
   }
 
   logout() {

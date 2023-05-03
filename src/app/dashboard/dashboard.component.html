@@ -6,4 +6,8 @@
     </button></span
   >
 </h3>
-<flight-table [flights]="flights"></flight-table>
+<flight-table
+  [flights_info]="flights"
+  [isLoading]="isLoading"
+  [error]="error"
+></flight-table>
