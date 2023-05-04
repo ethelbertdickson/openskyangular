@@ -2,39 +2,60 @@
   class="d-flex align-items-center justify-content-center vh-100 bg-secondary"
 >
   <div class="w-25 border p-3 rounded bg-light">
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label htmlFor="email" class="form-label text-bg-success">
           Username
         </label>
         <input
-          [(ngModel)]="username"
-          required
+          formControlName="username"
+          name="username"
           title="username"
-          placeholder="username"
           type="text"
           class="form-control"
-          id="username"
-          name="username"
         />
+        <div
+          *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
+          class="text-danger"
+        >
+          <div *ngIf="form.get('username')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="form.get('username')?.errors?.['email']">
+            Provide valid email.
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label htmlFor="password" class="form-label text-bg-success">
           Password
         </label>
         <input
-          [(ngModel)]="password"
-          required
+          formControlName="password"
           title="password"
-          placeholder="password"
           type="password"
           class="form-control"
-          id="password"
-          name="password"
         />
+        <div
+          *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+          class="text-danger"
+        >
+          <div *ngIf="form.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="form.get('password')?.errors?.['minlength']">
+            Password must be longer than 3 characters
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary float-end">Submit</button>
+      <button
+        [disabled]="form.invalid"
+        type="submit"
+        class="btn btn-primary float-end"
+      >
+        Submit
+      </button>
     </form>
-    <p class="text-danger">{{ errorMessage }}</p>
+    <p *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</p>
   </div>
 </div>

@@ -14,7 +14,7 @@ export class AuthService {
     // Simulate a login process by checking the username and password
     // against a hardcoded value. If they match, store the user token
     // in local storage and return true, otherwise return false.
-    if (username === 'admin' && password === 'password') {
+    if (username === 'admin@gmail.com' && password === 'password') {
       localStorage.setItem(this.userTokenKey, 'user-token');
       return of(true);
     } else {
