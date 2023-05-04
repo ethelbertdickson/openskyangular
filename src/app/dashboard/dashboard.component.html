@@ -1,13 +1,17 @@
-<h3 class="d-flex justify-content-between">
-  Open Sky Dashboard
-  <span
-    ><button (click)="logout()" type="button" class="btn btn-secondary">
-      Logout
-    </button></span
+<div>
+  <h3
+    class="d-flex justify-content-between bg-dark sticky-top sticky-lg-top text-warning mb-0 p-3"
   >
-</h3>
-<flight-table
-  [flights_info]="flights"
-  [isLoading]="isLoading"
-  [error]="error"
-></flight-table>
+    Open Sky Dashboard
+    <span
+      ><button (click)="logout()" type="button" class="btn btn-secondary">
+        Logout
+      </button></span
+    >
+  </h3>
+  <flight-table
+    [flights_info]="flights"
+    [isLoading]="isLoading"
+    [error]="error"
+  ></flight-table>
+</div>
