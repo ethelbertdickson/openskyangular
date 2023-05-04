@@ -18,11 +18,17 @@
           *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
           class="text-danger"
         >
-          <div *ngIf="form.get('username')?.errors?.['required']">
+          <div
+            class="form-text text-danger"
+            *ngIf="form.get('username')?.errors?.['required']"
+          >
             Email is required.
           </div>
-          <div *ngIf="form.get('username')?.errors?.['email']">
-            Provide valid email.
+          <div
+            class="form-text text-danger"
+            *ngIf="form.get('username')?.errors?.['email']"
+          >
+            Please provide a valid email.
           </div>
         </div>
       </div>
@@ -40,10 +46,16 @@
           *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
           class="text-danger"
         >
-          <div *ngIf="form.get('password')?.errors?.['required']">
+          <div
+            class="form-text text-danger"
+            *ngIf="form.get('password')?.errors?.['required']"
+          >
             Password is required.
           </div>
-          <div *ngIf="form.get('password')?.errors?.['minlength']">
+          <div
+            class="form-text text-danger"
+            *ngIf="form.get('password')?.errors?.['minlength']"
+          >
             Password must be longer than 3 characters
           </div>
         </div>
