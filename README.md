@@ -6,6 +6,7 @@ Angular app to fetch flight details from opensky api and display on the page. Th
 3. Routing
 4. Route Protection
 5. Not-Found Page
+6. Search 
 
 INSTALLATION GUIDE:
 
