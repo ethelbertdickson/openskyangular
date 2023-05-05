@@ -17,21 +17,22 @@ export class FlightTableComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.flights_info) {
-      this.filteredFlights = this.flights_info.filter((flight) => {
-        return (
-          flight.callsign &&
-          flight.callsign.toLowerCase().includes(this.searchQuery.toLowerCase())
-        );
-      });
+      this.filterFlights();
     }
+  }
+
+  private filterFlights() {
+    this.filteredFlights = this.flights_info.filter((flight) => {
+      return (
+        flight.callsign &&
+        flight.callsign.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    });
   }
 
   search(query: string) {
     console.log(query);
-    this.filteredFlights = query
-      ? this.flights_info.filter((f) =>
-          f.callsign?.toLowerCase().includes(query.toLowerCase())
-        )
-      : this.flights_info;
+    this.searchQuery = query;
+    this.filterFlights();
   }
 }
