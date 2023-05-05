@@ -1,9 +1,22 @@
-<div *ngIf="isLoading">Loading flights...</div>
-<div *ngIf="error">
+<div *ngIf="isLoading" class="bg-info text-light">Loading flights...</div>
+<div *ngIf="error" class="bg-danager text-light">
   Error fetching flights: Check your internet connection and try again
 </div>
 
-<table *ngIf="!isLoading && !error" class="table table-dark table-hover mb-0">
+<div class="input-group mb-0">
+  <input
+    #query
+    (keyup)="search(query.value)"
+    type="text"
+    class="form-control"
+    placeholder="Search flights using flight codes. E.g SWG9426 | swg9426"
+  />
+</div>
+
+<table
+  *ngIf="!isLoading && !error && flights_info.length > 0"
+  class="table table-dark table-hover mb-0"
+>
   <thead>
     <tr>
       <th scope="col">Flight</th>
@@ -14,12 +27,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let flight of flights_info">
+    <tr *ngFor="let flight of filteredFlights">
       <td>{{ flight.callsign }}</td>
       <td>{{ flight.estDepartureAirport }}</td>
       <td>{{ flight.firstSeen * 1000 | date : "shortTime" }}</td>
       <td>{{ flight.estArrivalAirport }}</td>
       <td>{{ flight.lastSeen * 1000 | date : "shortTime" }}</td>
+    </tr>
+    <tr *ngIf="filteredFlights.length === 0">
+      <td colspan="5">No flights found.</td>
     </tr>
   </tbody>
 </table>
