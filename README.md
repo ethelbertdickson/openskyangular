@@ -1,12 +1,13 @@
 # Opensky
 
 Angular app to fetch flight details from opensky api and display on the page. This project covers:
-1. Authentication 
-2. Service for fetching the flight data
-3. Routing
-4. Route Protection
-5. Not-Found Page
-6. Search 
+1. Authentication
+2. Login Form validation
+3. Service for fetching the flight data
+4. Routing
+5. Route Protection
+6. Not-Found Page
+7. Search 
 
 INSTALLATION GUIDE:
 
